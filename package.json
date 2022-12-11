@@ -1,0 +1,23 @@
+{
+  "name": "look-inna-book",
+  "version": "1.0.0",
+  "description": "COMP3005 Final Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OmarBafagih/Look-Inna-Book.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OmarBafagih/Look-Inna-Book/issues"
+  },
+  "homepage": "https://github.com/OmarBafagih/Look-Inna-Book#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "pug": "^3.0.2"
+  }
+}
