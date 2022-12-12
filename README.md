@@ -9,7 +9,8 @@
 2. The store owner has the ability to add or remove books to and from the store's stock
 3. The user must enter their username and click the "retrieve cart" button to add to their cart and is also required to retrieve their potential current outstanding cart from the database
 4. The user must enter an ISBN for the book they would like to add to their cart and click the "add to cart" button
-
+5. A store owner can add an expense manually via the /storeOwner route
+   
 ## Run Instructions:
 1. Clone repository
 2. Make sure to have NPM installed and run the command 'npm i' to install all the required dependencies marked in the package.json file. If the 'npm i' command oesn't work, run the following commands:
