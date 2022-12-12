@@ -19,8 +19,7 @@ function submit(){
     xhttp.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
             //redirect to allow to browese through books
-            window.location.href = "http://localhost:3000/customer";
-            
+            window.location.href = "http://localhost:3000/customer";   
         }
     };
     
