@@ -3,12 +3,43 @@ head
     title Login
     meta(charset='UTF-8')
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='customer.css')
 body(onload="init()")
     include partials/header
     br
     |
-    h3 Browse books and add some to your cart
-    div#books
-        
+    div#container
+        div#bookCollection
+            h3 Browse books and add some to your cart
+            div#browse
+                each book in books
+                    ul
+                        li= `Title: ${book.bookname}`
+                        p= `ISBN: ${book.isbn}`
+                        p= `author name: ${book.authorname}`
+                        p= `price: ${book.price}`
+                        p= `genre: ${book.genre}`
+                    br
 
-    script(src="customer.js")
+            script(src="customer.js")
+        div#addToCart
+            | Enter the ISBN of the book you would like to add to your cart: 
+            input(id="isbn", type='text', value='')
+            br
+            input(id="add", type='submit', value='Add to Cart')
+            br
+        div#cart
+            h3 Your Cart
+            | Enter your username:
+            |
+            input(id="username", type='text', value='')
+            br
+            |
+            input(id="Submit", type='submit', value='Retrieve my cart')
+            br
+            |
+            |Items in cart:
+            p Title
+            br
+            input(id="Submit", type='submit', value='Submit Order')
+            br
