@@ -1,0 +1,26 @@
+html(lang="en")
+head
+    title Login
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+body(onload="init()")
+    include partials/header
+    br
+    |
+    h3 New User Registration
+    | username: 
+    input(id="username",type='text', name='title', value='')
+    br
+    | first name: 
+    input(id="fName", type='text', name='fname', value='')
+    br
+    | last name: 
+    input(id="lName", type='text', name='lname', value='')
+    br
+    | address: 
+    input(id="address", type='text', name='address', value='')
+    br
+    input(id="submit", type='submit', value='Submit')
+    script(src="register.js")
+    
+    

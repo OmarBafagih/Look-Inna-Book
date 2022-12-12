@@ -5,7 +5,46 @@ head
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
 body(onload="init()")
     include partials/header
+    h3 Fill out this form below to add books to the store:
+    br
+    | ISBN: 
+    input(id="ISBN", type='text', value='')
+    br
+    | bookName: 
+    input(id="bookName", type='text', value='')
+    br
+    | authorName: 
+    input(id="authorName", type='text', value='')
+    br
+    | genre: 
+    input(id="genre", type='text', value='')
+    br
+    | publisher: 
+    input(id="publisherName", type='text', value='')
+    br
+    | price: 
+    input(id="price", type='text', value='')
+    br
+    | pages: 
+    input(id="pages", type='text', value='')
+    br
+    | transfer percentage: 
+    input(id="transferPercentage", type='text', value='')
+    br
+    | quantity: 
+    input(id="quantity", type='text', value='')
     br
     |
-    h3 Welcome, please get logged in or Register to get Started
-    p hello
+    input(id="submit", type='submit', value='submit')
+
+    h3 Fill out this form below to remove books from the store: 
+    br 
+    | ISBN: 
+    input(id="ISBN2", type='text', value='')
+    br
+    | quantity: 
+    input(id="quantity2", type='text', value='')
+    br
+    |
+    input(id="submit2", type='submit', value='submit')
+    script(src="storeOwner.js")

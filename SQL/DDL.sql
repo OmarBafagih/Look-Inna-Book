@@ -1,0 +1,105 @@
+CREATE TABLE BOOK(
+	ISBN VARCHAR(10) UNIQUE NOT NULL,
+	bookName VARCHAR NOT NULL,
+	authorNAME VARCHAR,
+	genre VARCHAR,
+	publisherName VARCHAR,
+	price NUMERIC(6,2) NOT NULL,
+	pages INT,
+	transferPercentage NUMERIC(4,2) NOT NULL,
+	quantity INT,
+	PRIMARY KEY(ISBN)
+);
+
+
+CREATE TABLE CUSTOMER(
+	userName VARCHAR(18) UNIQUE NOT NULL,
+	fName VARCHAR,
+	lName VARCHAR,
+	address VARCHAR,
+	PRIMARY KEY(userName)
+);
+
+CREATE TABLE CART(
+	userName VARCHAR(18) UNIQUE NOT NULL,
+	cartID SERIAL,
+	PRIMARY KEY(cartID),
+	FOREIGN KEY(userName) REFERENCES CUSTOMER(userName)
+	
+);
+
+CREATE TABLE BOOKCONTAINS(
+	cartID int,
+	ISBN VARCHAR(10) NOT NULL,
+	quantity VARCHAR NOT NULL,
+	PRIMARY KEY(cartID, ISBN),
+	FOREIGN KEY(cartID) REFERENCES CART(cartID),
+	FOREIGN KEY(ISBN) REFERENCES BOOK(ISBN)
+);
+
+CREATE TABLE SUBMITORDER(
+	orderNum SERIAL UNIQUE,
+	userName VARCHAR(18) UNIQUE NOT NULL,
+	cartID INT,
+	reportID SERIAL UNIQUE,
+	PRIMARY KEY(orderNum) ,
+	FOREIGN KEY(cartID) REFERENCES CART(cartID)
+); 
+
+CREATE TABLE REPORT(
+	reportID INT,
+	expenseOrSale CHAR(1) NOT NULL,
+	amount NUMERIC(6,2) NOT NULL,
+	PRIMARY KEY(reportID),
+	FOREIGN KEY(reportID) REFERENCES SUBMITORDER(reportID)
+
+	
+);
+
+
+CREATE TABLE STOREOWNER(   
+	bankingAccount VARCHAR UNIQUE NOT NULL,
+	fName VARCHAR NOT NULL,
+	LNAME VARCHAR NOT NULL,
+	PRIMARY KEY(bankingAccount)
+);
+
+CREATE TABLE EXPENSES(
+	reportID SERIAL,
+	bankingAccount VARCHAR NOT NULL,
+	description VARCHAR,
+	amount NUMERIC(10,2),
+	PRIMARY KEY(reportID)
+	
+);
+ALTER TABLE report
+ADD FOREIGN KEY (reportID) references expenses(reportID);
+
+CREATE TABLE PUBLISHER(
+	publisherName VARCHAR UNIQUE NOT NULL,
+	address VARCHAR,
+	emailAddress VARCHAR NOT NULL,
+	phoneNum VARCHAR NOT NULL,
+	bankingNum VARCHAR NOT NULL,
+	PRIMARY KEY(publisherName)
+);
+
+CREATE TABLE TRANSFERS(
+	publisherName VARCHAR NOT NULL,
+	bankingAccount VARCHAR NOT NULL,
+	transferAmmount NUMERIC(6,2),
+	PRIMARY KEY(publisherName,bankingAccount),
+	FOREIGN KEY(publisherName) REFERENCES PUBLISHER(publisherName),
+	FOREIGN KEY(bankingAccount) REFERENCES STOREOWNER(bankingAccount)
+);
+
+CREATE TABLE GIVES(
+	publisherName VARCHAR,
+	bankingAccount VARCHAR,
+	ISBN VARCHAR(10),
+	quantity VARCHAR,
+	PRIMARY KEY(publisherName,bankingAccount,ISBN),
+	FOREIGN KEY(publisherName) REFERENCES PUBLISHER(publisherName),
+	FOREIGN KEY(bankingAccount) REFERENCES STOREOWNER(bankingAccount),
+	FOREIGN KEY(ISBN) REFERENCES BOOK(ISBN)
+);
